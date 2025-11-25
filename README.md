@@ -1,3 +1,3 @@
 # The Flint Website
 
-https://flint.dev
+https://flint-lang.vercel.app

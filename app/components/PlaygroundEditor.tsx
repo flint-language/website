@@ -16,29 +16,36 @@ export default function PlaygroundEditor({
   const editorRef = useRef<any>(null);
 
   useEffect(() => {
+    let mounted = true;
+
     (async () => {
       const monaco = await import("monaco-editor");
+
       const res = await fetch("/themes/krTheme.json");
       const themeJson = await res.json();
 
       monaco.editor.defineTheme("krTheme", themeJson as any);
       monaco.editor.setTheme("krTheme");
 
-      if (!el.current || editorRef.current) return;
+      if (!el.current || editorRef.current || !mounted) return;
 
       const editor = monaco.editor.create(el.current, {
         value,
         language,
         theme: "krTheme",
-        fontSize: 14,
+
         fontFamily: "JetBrains Mono, monospace",
+        fontSize: 16,
+        lineHeight: 1.6,
+
         minimap: { enabled: false },
-        automaticLayout: true,
-        autoClosingBrackets: "always", // (), {}, []
-        autoClosingQuotes: "always", // "", '', ``
-        autoSurround: "languageDefined", // for wrapping selection
-        suggestOnTriggerCharacters: true,
-        tabCompletion: "on",
+        scrollBeyondLastLine: false,
+        renderLineHighlight: "line",
+        padding: { top: 12 },
+
+        cursorBlinking: "solid",
+        cursorStyle: "line",
+        automaticLayout: false,
       });
 
       editorRef.current = editor;
@@ -48,12 +55,24 @@ export default function PlaygroundEditor({
       });
 
       await setupFlint(editor);
+      const relayout = () => {
+        editor.layout();
+      };
+
+      requestAnimationFrame(relayout);
+      setTimeout(relayout, 50);
+      setTimeout(relayout, 250);
     })();
 
     return () => {
+      mounted = false;
       editorRef.current?.dispose();
     };
   }, []);
 
-  return <div ref={el} style={{ width: "100%", height: "100%" }} />;
+  return (
+    <div className="h-full w-full overflow-hidden">
+      <div ref={el} className="h-full w-full" />
+    </div>
+  );
 }

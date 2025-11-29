@@ -4,7 +4,27 @@ import { useState } from "react";
 import PlaygroundEditor from "../components/PlaygroundEditor";
 
 export default function Playground() {
-  const [code, setCode] = useState("");
+  const [code, setCode] = useState(`
+/*
+  Welcome to the official Flint Playground!
+
+  You don't need to install anything - just write your code
+  and see the results appear in the Output panel.
+
+  This playground is powered by Flint.
+*/
+    
+use flint/io.{println}
+
+fn fib(n) {
+  if n < 2 then 1 
+  else fib(n - 1) + fib(n - 2)
+}
+    
+pub fn main() {
+  println(fib(10))
+}
+`);
   const [output, setOutput] = useState("");
 
   return (

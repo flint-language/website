@@ -46,6 +46,7 @@ export default function PlaygroundEditor({
         cursorBlinking: "solid",
         cursorStyle: "line",
         automaticLayout: false,
+        cursorSmoothCaretAnimation: "on"
       });
 
       editorRef.current = editor;

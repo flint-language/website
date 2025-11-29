@@ -1,10 +1,6 @@
-"use client";
+import Playground from "./Playground";
 
-import UnderConstruction from "../components/UnderConstruction";
-
-
-export default function Home() {
-  return (
-    <UnderConstruction/>
-  );
+export default function Page() {
+  return <Playground />;
 }
+

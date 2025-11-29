@@ -14,6 +14,9 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Flint programming language",
+  other: {
+    "darkreader-lock": "true",
+  },
 };
 
 export default function RootLayout({

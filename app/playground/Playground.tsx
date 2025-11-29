@@ -4,8 +4,7 @@ import { useState } from "react";
 import PlaygroundEditor from "../components/PlaygroundEditor";
 
 export default function Playground() {
-  const [code, setCode] = useState(`
-/*
+  const [code, setCode] = useState(`/*
   Welcome to the official Flint Playground!
 
   You don't need to install anything - just write your code

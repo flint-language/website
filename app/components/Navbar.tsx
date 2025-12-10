@@ -12,7 +12,6 @@ import { HiOutlineDownload } from "react-icons/hi";
 export default function Navbar() {
     const path = usePathname();
     const [open, setOpen] = useState(false);
-
     const NavItem = ({ href, label, icon }: { href: string; label: string; icon?: React.ReactNode }) => {
         const active = path === href;
         return (
@@ -33,7 +32,6 @@ export default function Navbar() {
             </Link>
         );
     };
-
     const IconOrb = ({
         href,
         children,
@@ -49,8 +47,7 @@ export default function Navbar() {
             href={href}
             target="_blank"
             aria-label={ariaLabel}
-            className={`flex items-center justify-center h-9 w-9 rounded-full
-        bg-white/80 dark:bg-black/70 backdrop-blur-md
+            className={`flex items-center justify-center h-9 w-9 rounded-full backdrop-blur-md
         border border-black/10 dark:border-white/10
         shadow-md transform transition-all duration-200
         hover:scale-110 hover:shadow-[0_0_15px_${hoverColor}] active:scale-95`}
@@ -58,14 +55,11 @@ export default function Navbar() {
             {children}
         </a>
     );
-
     return (
         <>
             <header className="fixed top-0 z-50 w-full">
-                <div className="backdrop-blur-xl bg-white/70 dark:bg-black/65 border-b border-black/10 dark:border-white/10">
+                <div className="backdrop-blur-xl border-b border-black/10 dark:border-white/10">
                     <div className="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
-
-                        {/* Logo */}
                         <Link href="/" className="flex items-center gap-3 group">
                             <Image
                                 src="/logo.png"
@@ -78,15 +72,11 @@ export default function Navbar() {
                                 Flint
                             </span>
                         </Link>
-
-                        {/* Desktop nav */}
                         <nav className="hidden md:flex items-center gap-4">
                             <NavItem href="/" label="Home" icon={<AiOutlineHome />} />
                             <NavItem href="/docs" label="Docs" icon={<MdDescription />} />
                             <NavItem href="/playground" label="Playground" icon={<MdCode />} />
                             <NavItem href="/download" label="Download" icon={<HiOutlineDownload />} />
-
-                            {/* Social/Brand icons */}
                             <div className="flex gap-2 ml-2">
                                 <IconOrb
                                     href="https://github.com/flint-language"
@@ -105,8 +95,6 @@ export default function Navbar() {
                                 </IconOrb>
                             </div>
                         </nav>
-
-                        {/* Mobile toggle */}
                         <button
                             onClick={() => setOpen(!open)}
                             className="md:hidden text-xl transition hover:scale-110"
@@ -116,12 +104,8 @@ export default function Navbar() {
                         </button>
                     </div>
                 </div>
-
-                {/* Accent bar */}
                 <div className="h-[1.5px] bg-gradient-to-r from-orange-400 via-red-500 to-pink-500 opacity-80" />
             </header>
-
-            {/* Mobile menu overlay */}
             {open && (
                 <div className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-6
                         bg-white/85 dark:bg-black/80 backdrop-blur-lg text-xl">
@@ -129,7 +113,6 @@ export default function Navbar() {
                     <NavItem href="/docs" label="Docs" icon={<MdDescription />} />
                     <NavItem href="/playground" label="Playground" icon={<MdCode />} />
                     <NavItem href="/download" label="Download" icon={<HiOutlineDownload />} />
-
                     <div className="flex gap-4 mt-4">
                         <IconOrb
                             href="https://github.com"
@@ -149,8 +132,6 @@ export default function Navbar() {
                     </div>
                 </div>
             )}
-
-            {/* Spacer */}
             <div className="h-16" />
         </>
     );

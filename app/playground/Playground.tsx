@@ -12,7 +12,7 @@ export default function Playground() {
 
   This playground is powered by Flint.
 */
-    
+
 use flint/io.{println}
 
 fun fib(n) {

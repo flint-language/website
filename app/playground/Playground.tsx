@@ -15,12 +15,12 @@ export default function Playground() {
     
 use flint/io.{println}
 
-fn fib(n) {
+fun fib(n) {
   if n < 2 then 1 
   else fib(n - 1) + fib(n - 2)
 }
     
-pub fn main() {
+pub fun main() {
   println(fib(10))
 }
 `);

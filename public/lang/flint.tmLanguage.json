@@ -1,5 +1,6 @@
 {
-	 	"name": "Flint",
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Flint",
 	"patterns": [
 		{
 			"include": "#comments"
@@ -25,7 +26,7 @@
 			"patterns": [
 				{
 					"name": "keyword.control.flint",
-					"match": "\\b(as|assert|else|fn|if|match|mut|panic|pub|type|use|val)\\b"
+					"match": "\\b(as|else|fn|fun|if|match|mut|pub|then|type|use|val)\\b"
 				},
 				{
 					"name": "keyword.operator.arrow.flint",
@@ -89,6 +90,11 @@
 				{
 					"name": "comment.line.flint",
 					"match": "\/\/.*"
+				},
+				{
+					"name": "comment.block.flint",
+					"begin": "/\\*",
+					"end": "\\*/"
 				}
 			]
 		},
@@ -110,7 +116,7 @@
 		},
 		"primitives": {
 			"name": "storage.type.primitive.flint",
-			"match": "\\b(Bool|Byte|Float|Int|List|Nil|String)\\b"
+			"match": "\\b(Bool|Byte|Float|F32|F64|Int|I8|I16|I32|I64|List|Nil|String|Unsigned|U8|U16|U32|U64)\\b"
 		},
 		"variables": {
 			"patterns": [
